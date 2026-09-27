@@ -12,7 +12,7 @@ El proyecto crece según voy necesitando componentes para mi proyecto principal,
 ## Uso  :gear:
 Clona este repositorio:  
 ```
-git clone https://github.com/HectorCRM/simple_macroquad_slider.git
+git clone https://github.com/HectorCRM/Macroquad-Components.git
 ```
 
 Abre el Cargo.toml del proyecto en el que quieras utilizarlo y añade:
