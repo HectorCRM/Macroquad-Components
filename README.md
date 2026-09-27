@@ -1,15 +1,15 @@
 # Macroquad Components :bar_chart:  
 ![Visitas](https://komarev.com/ghpvc/?username=HectorCRM-simple-macroquad-slider&color=blue&style=round&label=Visitas:)  
 
-![Ejemplo](./img/slider.gif)  
+![Ejemplo](./img/ejemplo_slider_textField.gif)  
 
 ## ¿Cual es la utilidad de este proyecto? ⁉️
 Este es mi primer pequeño proyecto desarrollado en Rust, como parte de un proyecto mayor.  
-El caso es que necesitaba utilizar sliders para controlar el volumen y... el que ofrece macroquad me parecio feo. Asi que si algo no te gusta... ¡crea tu propia versión!  
-Aun hay mucho que pulir, poco a poco ire mejorandole conforme vaya encontrando sus limites en diferentes proyectos o si recibo algun tipo de feedback.  
-El proyecto crece según voy necesitando componentes para mi proyecto principal, asi que pasa a llamarse Macroquad Components, ya que va a englobar las diferentes utilidades que vaya desarrollando para mis proyectos dentro del ecosistema de Macroquad.
+El caso es que necesitaba utilizar sliders para controlar el volumen y... el que ofrece macroquad no me pareció especialmente bonito. Asi que si algo no te gusta... ¡crea tu propia versión!  
+Aún hay mucho que pulir, poco a poco ire mejorando los componentes conforme vaya encontrando sus limites en diferentes proyectos o si recibo algún tipo de feedback.  
+El proyecto crece según voy necesitando componentes para mi proyecto principal, así que pasa a llamarse Macroquad Components, ya que va a englobar los diferentes componentes que vaya desarrollando para mis proyectos dentro del ecosistema de Macroquad.  
 
-## Uso  :gear:
+## Cómo usar la crate :gear:
 Clona este repositorio:  
 ```
 git clone https://github.com/HectorCRM/Macroquad-Components.git
@@ -18,22 +18,35 @@ git clone https://github.com/HectorCRM/Macroquad-Components.git
 Abre el Cargo.toml del proyecto en el que quieras utilizarlo y añade:
 ```
 [dependencies]
-Slider = { path = "/ruta del crate en tu máquina" }
+mq_components = { path = "/ruta del crate en tu máquina/mq_components" }
 ```
 
-Luego incluyelo en el proyecto:
-```
-use slider::Slider;
+Luego incluyelo en tu proyecto el componente o componentes que necesites:
+```rust
+use mq_components::slider::Slider;
+use mq_components::text_field::*;
 ```
 
-Hecho esto, debes contar con una variable de tipo mut sobre la cual trabajara el slider. En el gif de ejemplo trabaja con volumen:
-```
-let mut volumen: f32 = 0.5; //A mitad, por ejemplo
+## Ejemplos
+### Slider
+
+Una vez importado el módulo, debes contar con una variable de tipo **mut** sobre la cual trabajará el slider. En el gif de ejemplo trabaja con el canal rojo del color RGB:
+```rust
+let mut color: f32 = 127.0;
 ```
 
 Despues construimos el slider:
-```
-let mut slider_volumen: Slider = Slider::nuevo_slider(nombre_etiqueta, metrica, posicion_y, ancho_barra, alto, valor, valor_minimo, valor_maximo, color_barra, color_slider);
+```rust
+let mut slider: Slider = Slider::nuevo_slider(
+	nombre_etiqueta,
+	metrica,
+	posicion_y,
+	ancho_barra,
+	alto, valor,
+	valor_minimo,
+	valor_maximo,
+	color_barra,
+	color_slider);
 ```
 Explicación de los parametros:  
  - **nombre_etiqueta:** El nombre que se mostrará sobre el slider en pantalla, en el ejemplo "Volumen"
@@ -47,11 +60,44 @@ Explicación de los parametros:
  - **color_barra:** Color deseado para la barra del slider.
  - **color_slider:** Color deseado para el slider y la etiqueta sobre este.  
  
-Y ya podemos usarlo:
+Y ya podemos usarlo dentro del loop:
+```rust
+slider.pintar_slider(color);
+color = slider.mover_slider(color);
+```  
+
+### Text Field
+Una vez importado el módulo, debes crear una lista para el campo o campos de texto:
+```rust
+let mut lista: ListaTextFields = ListaTextFields::nuevo();
 ```
-slider_volumen.pintar_slider(volumen);
-volumen = slider_volumen.mover_slider(volumen);
+Hecho esto ya puedes añadir a la lista los diferentes componentes TextField que necesites:
+```rust
+lista.agregar(TextField::text_field(
+	x,
+	y,
+	ancho,
+	alto,
+	color_fondo,
+	color_texto,
+	etiqueta,
+	place_holder));
 ```
+Explicación de los parametros: 
+ - **x:** Es la posicion en que se rendirzará el campo de texto en el eje x(horizontal).
+ - **y:** Es la posicion en que se rendirzará el campo de texto en el eje y(vertical). La etiqueta se pintará encima automáticamente.
+ - **ancho:** Anchura del campo de texto en px. Hay que tener en cuenta cuantos caracteres esperamos en el input, ya que estan limitados para no desbordar la anchura del componente.
+ - **alto:** Altura en px del campo de texto. A partir de este parametro se calcula el tamaño de la fuente de forma automatica.
+ - **color_fondo:** Color de fondo del componente. Por defecto sera gris si el componente no tiene el foco.
+ - **color_texto:** Color del texto.
+ - **etiqueta:** Cadena para indicar que input se espera(nombre, descripcion...).
+ - **place_holder:** Este parametro es opcional. Si no quiere especificarse nada en concreto debe ponerse a None para que por defecto muestre ***"Escribe aquí..."***. Si se quiere especificar algo concreto debe ponerse ***Some("Cadena")***  
+
+Hecho esto ya podria utilizarse dentro del loop:
+```rust
+text_field_list.actualizar_y_pintar();
+```
+
 
 ## Requisitos :clipboard:
  - Git
