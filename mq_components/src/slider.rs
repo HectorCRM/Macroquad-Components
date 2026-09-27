@@ -1,19 +1,23 @@
-//! # Simple Macroquad Slider
+//! # Macroquad Utils
 //! 
-//! Una crate sencilla de utilizar para generar sliders personalizados bajo Macroquad
+//! //! Version: 0.1.1
+//! Autor: Héctor Monroy Fuertes
+//! Fecha inicio: 20-09-2026
+//! 
+//! Una crate sencilla de utilizar para generar sliders y campos de texto en Macroquad
 //! 
 //! ## ¿Por qué esta crate?
-//! Esta crate está siendo desarrollada debido a que el slider nativo que ofrece Macroquad es funcional, 
-//! pero no es fácilmente personalizable ni bonito. Esta crate viene a tratar de solventar eso, haciendo que crear
-//! un slider visualmente atractivo sea sencillo.
+//! Esta crate está siendo desarrollada debido a que los widgets nativos que ofrece Macroquad, aunque funcionales, 
+//! no son fácilmente personalizables ni bonitos. Esta crate viene a tratar de solventar eso, haciendo que crear
+//! widgets en el ecosistema de macroquad sea mas sencillo y personalizable.
 //! 
-//! ## Caracteristicas
+//! ## Caracteristicas de Slider
 //! - **Rango dinamico:** Admite valores lógicos(en f32) personalizados (Ej: 0.0 a 1.0, 0.0 a 255.0).
 //! - **Métricas personalizadas:** Permite añadir un sufijo al valor mostrado por el slider (Ej: "%", "px", ""... ).
 //! 
-//! ### Ejemplo básico
+//! ### Ejemplo básico de uso de Slider
 //! ```rust
-//! use slider::Slider;
+//! use mq_components::slider::Slider;
 //! use macroquad::prelude::*;
 //! 
 //! #[macroquad::main("Ejemplo")]
@@ -33,10 +37,13 @@
 //!     }
 //! }
 //! ```
-//! 
+
 
 use macroquad::prelude::*;
 
+///
+/// Slider
+/// 
 /// Struct con todos los datos del slider
 pub struct Slider {
     pos_x_barra: f32,

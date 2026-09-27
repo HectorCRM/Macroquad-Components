@@ -1,0 +1,9 @@
+[package]
+name = "mq_components"
+version = "1.2.0"
+edition = "2024"
+authors = ["Héctor Monroy Fuertes"]
+description = "Suite de componentes personalizables para el ecosistema Macroquad"
+
+[dependencies]
+macroquad = "0.4"

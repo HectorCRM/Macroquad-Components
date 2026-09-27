@@ -1,4 +1,4 @@
-# Simple_Macroquad_Slider :bar_chart:  
+# Macroquad Components :bar_chart:  
 ![Visitas](https://komarev.com/ghpvc/?username=HectorCRM-simple-macroquad-slider&color=blue&style=round&label=Visitas:)  
 
 ![Ejemplo](./img/slider.gif)  
@@ -7,6 +7,7 @@
 Este es mi primer pequeño proyecto desarrollado en Rust, como parte de un proyecto mayor.  
 El caso es que necesitaba utilizar sliders para controlar el volumen y... el que ofrece macroquad me parecio feo. Asi que si algo no te gusta... ¡crea tu propia versión!  
 Aun hay mucho que pulir, poco a poco ire mejorandole conforme vaya encontrando sus limites en diferentes proyectos o si recibo algun tipo de feedback.  
+El proyecto crece según voy necesitando componentes para mi proyecto principal, asi que pasa a llamarse Macroquad Components, ya que va a englobar las diferentes utilidades que vaya desarrollando para mis proyectos dentro del ecosistema de Macroquad.
 
 ## Uso  :gear:
 Clona este repositorio:  
@@ -59,6 +60,8 @@ volumen = slider_volumen.mover_slider(volumen);
 ## Mejoras futuras :rocket:
  - Crear sliders verticales.  
  - Habilitar valores personalizados y diferentes métricas a los sliders. ✔️  
+ - Desarrollar campos de entrada de texto. ✔️  
+ 
 <!--
 ## Versiones :pushpin:
  [Ver CHANGELOG](./CHANGELOG.md) -->
